@@ -21,6 +21,12 @@ JupyterHub component comes with 2 parameters exposed vie KFDef.
 
 HTTP endpoint exposed by your S3 object storage solution which will be made available to JH users in `S3_ENDPOINT_URL` env variable.
 
+#### trusted_ca_bundle_path
+
+Full path to a non-publicly trusted ca-bundle file. Used to fill `TRUSTED_CA_BUNDLE_PATH` env variable containing the full path incl. filename to one or more trusted CAs in [Privacy-Enhanced Mail (PEM) file](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) format. For use in airgapped environments where SSL server authenticity can only be validated using certificates based on private public key infrastructure (PKI) with root and optionally intermediate certificate authorities (CAs) that are not publicly trusted. Specifically used for example by Elyra for downloading package catalog files from an airgapped e.g. Artifactory or Nexus with private PKI and establishing the SSL chain of trust. See e.g. on-premise Openshift installs with additionalTrustBundle setting that can be injected into configmaps at a namespace for usage on containers.
+https://docs.openshift.com/container-platform/4.8/networking/configuring-a-custom-pki.html
+This requires `trusted-ca-bundle-path` **overlay** to be enabled as well to work.
+
 #### storage_class
 
 Name of the storage class to be used for PVCs created by JupyterHub component. This requires `storage-class` **overlay** to be enabled as well to work.
@@ -49,6 +55,22 @@ A Secret containing configuration values like JupyterHub DB password or COOKIE_S
         path: jupyterhub/jupyterhub
     name: jupyterhub
 ```
+#### trusted_ca_bundle_path in conjunction with S3 storage for Elyra Pipelines metadata and HTTP-location-based built-in catalog connectors (URL catalog, Apache Airflow package connector, Apache Airflow provider package connector). With this overlay, url download is made possible with optional verify parameter pointing to private PKI CA bundle file in env parameter TRUSTED_CA_BUNDLE_PATH)
+
+```yaml
+ - kustomizeConfig:
+     overlays:
+     - trusted-ca-bundle-path
+     parameters:
+       - name: trusted_ca_bundle_path
+         value: "/opt/app-root/etc/jupyter/custom/cacerts/trustedcas.pem"
+       - name: s3_endpoint_url
+         value: "http://ceph-nano-0"
+     repoRef:
+       name: manifests
+       path: jupyterhub/jupyterhub
+   name: jupyterhub
+```
 
 ### Overlays
 
@@ -61,6 +83,10 @@ Contains build manifests for JupyterHub images.
 #### storage-class
 
 Customizes JupyterHub to use a specific `StorageClass` for PVCs, see `storage_class` parameter.
+
+#### trusted-ca-bundle-path
+
+Customizes JupyterHub to use a specific ENV variable in TRUSTED_CA_BUNDLE_PATH in spawned notebook images. See `trusted_ca_bundle_path` parameter. The ENV variable is used in configmap jupyter-singleuser-profiles, if parameter is defined.
 
 ## Notebook Images
 

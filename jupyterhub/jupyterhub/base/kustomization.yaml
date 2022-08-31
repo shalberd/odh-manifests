@@ -37,7 +37,7 @@ commonLabels:
 
 configMapGenerator:
 - name: parameters
-  envs: 
+  envs:
     - params.env
 generatorOptions:
   disableNameSuffixHash: true
@@ -63,6 +63,13 @@ vars:
     apiVersion: v1
   fieldref:
     fieldpath: data.s3_endpoint_url
+- name: trusted_ca_bundle_path
+  objref:
+    kind: ConfigMap
+    name: parameters
+    apiVersion: v1
+  fieldref:
+    fieldpath: data.trusted_ca_bundle_path    
 - name: jupyterhub_groups_config
   objref:
     kind: ConfigMap
