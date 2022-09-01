@@ -9,8 +9,6 @@ data:
         env:
           - name: S3_ENDPOINT_URL
             value: $(s3_endpoint_url)
-          - name: TRUSTED_CA_BUNDLE_PATH
-            value: $(trusted_ca_bundle_path)
         resources:
           requests:
             memory: 1Gi

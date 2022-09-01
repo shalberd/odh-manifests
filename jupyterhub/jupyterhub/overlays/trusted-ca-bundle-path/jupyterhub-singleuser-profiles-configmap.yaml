@@ -1,0 +1,5 @@
+- op: add
+  path: /data/jupyterhub-singleuser-profiles.yaml/profiles[0]/env/-
+  value:
+      name: TRUSTED_CA_BUNDLE_PATH
+      value: $(trusted_ca_bundle_path)
