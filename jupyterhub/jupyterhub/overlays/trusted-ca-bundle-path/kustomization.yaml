@@ -8,4 +8,4 @@ bases:
   - ../../base
 resources:
   - trusted-cabundle-configmap.yaml
-  -jupyterhub-singleuser-profiles-configmap.yaml
+  - jupyterhub-singleuser-profiles-configmap.yaml
