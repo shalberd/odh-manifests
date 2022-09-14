@@ -6,6 +6,9 @@ commonLabels:
 
 bases:
   - ../../base
+
 resources:
   - trusted-cabundle-configmap.yaml
+
+patchesStrategicMerge:
   - jupyterhub-singleuser-profiles-configmap.yaml
