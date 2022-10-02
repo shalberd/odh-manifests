@@ -6,9 +6,9 @@ MY_DIR=$(readlink -f `dirname "${BASH_SOURCE[0]}"`)
 
 source ${MY_DIR}/../util
 
-JH_LOGIN_USER=${OPENSHIFT_USER:-"admin"} #Username used to login to JH
-JH_LOGIN_PASS=${OPENSHIFT_PASS:-"admin"} #Password used to login to JH
-OPENSHIFT_LOGIN_PROVIDER=${OPENSHIFT_LOGIN_PROVIDER:-"htpasswd-provider"} #OpenShift OAuth provider used for login
+JH_LOGIN_USER=${OPENSHIFT_TESTUSER_NAME:-"admin"} #Username used to login to JH
+JH_LOGIN_PASS=${OPENSHIFT_TESTUSER_PASS:-"admin"} #Password used to login to JH
+OPENSHIFT_TESTUSER_LOGIN_PROVIDER=${OPENSHIFT_TESTUSER_LOGIN_PROVIDER:-"htpasswd-provider"} #OpenShift OAuth provider used for login
 JH_AS_ADMIN=${JH_AS_ADMIN:-"true"} #Expect the user to be Admin in JupyterHub
 ODS_CI_REPO_ROOT=${ODS_CI_REPO_ROOT:-"${HOME}/src/ods-ci"}
 
@@ -42,6 +42,8 @@ function test_ods_ci() {
 }
 
 test_jupyterhub
-test_ods_ci
+# Disable execution of the ods-ci test automation since it breaks on JH UI automation now that 
+#  notebook-controller is the default
+#test_ods_ci
 
 os::test::junit::declare_suite_end

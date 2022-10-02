@@ -16,6 +16,8 @@ spec:
       schema:
         openAPIV3Schema:
           type: object
+          required:
+            - spec
           properties:
             spec:
               type: object
@@ -37,6 +39,18 @@ spec:
                       type: boolean
                     disableISVBadges:
                       type: boolean
+                    disableUserManagement:
+                      type: boolean
+                groupsConfig:
+                  type: object
+                  required:
+                    - adminGroups
+                    - allowedGroups
+                  properties:
+                    adminGroups:
+                      type: string
+                    allowedGroups:
+                      type: string
                 notebookSizes:
                   type: array
                   items:
@@ -66,38 +80,19 @@ spec:
                                 type: string
                 notebookController:
                   type: object
+                  required:
+                    - enabled
                   properties:
                     enabled:
                       type: boolean
-                    gpuConfig:
+                    notebookNamespace:
+                      type: string
+                    pvcSize:
+                      type: string
+                    notebookTolerationSettings:
                       type: object
                       properties:
-                        enabled:
-                          type: boolean
-                    envVarConfig:
-                      type: object
-                      properties:
-                        enabled: 
-                          type: boolean
-                notebookControllerState:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      user: 
-                        type: string
-                      lastSelectedImage:
-                        type: string
-                      lastSelectedSize:
-                        type: string
-                      environmentVariables:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            key:
-                              type: string
-                            value: 
-                              type: string
-                      secrets:
-                        type: string
+                          enabled:
+                            type: boolean
+                          key:
+                            type: string

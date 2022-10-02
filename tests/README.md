@@ -89,7 +89,7 @@ the export line in tests/util to set the value of ODHPROJECT to match name of th
 You can run tests individually by passing a substring to run.sh to match:
 
 ```sh
-./run.sh ailibrary.sh
+./run.sh dashboard.sh
 ```
 
 # Basic test

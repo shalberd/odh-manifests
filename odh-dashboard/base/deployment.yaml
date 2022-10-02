@@ -27,7 +27,7 @@ spec:
       serviceAccount: odh-dashboard
       containers:
       - name: odh-dashboard
-        image: quay.io/opendatahub/odh-dashboard:v2.0
+        image: odh-dashboard
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -39,10 +39,8 @@ spec:
             cpu: 1000m
             memory: 2Gi
         livenessProbe:
-          httpGet:
-            path: /api/status
+          tcpSocket:
             port: 8080
-            scheme: HTTP
           initialDelaySeconds: 30
           timeoutSeconds: 15
           periodSeconds: 30
@@ -50,7 +48,7 @@ spec:
           failureThreshold: 3
         readinessProbe:
           httpGet:
-            path: /api/status
+            path: /api/health
             port: 8080
             scheme: HTTP
           initialDelaySeconds: 30

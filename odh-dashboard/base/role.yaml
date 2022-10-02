@@ -20,19 +20,6 @@ rules:
       - list
       - watch
   - apiGroups:
-      - ''
-    verbs:
-      - create
-      - delete
-      - get
-      - list
-      - patch
-      - update
-      - watch
-    resources:
-      - configmaps
-      - secrets
-  - apiGroups:
       - batch
     verbs:
       - create
@@ -70,12 +57,13 @@ rules:
       - builds
       - buildconfigs
       - buildconfigs/instantiate
-  - verbs:
-      - list
-    apiGroups:
-      - rbac.authorization.k8s.io
+  - apiGroups:
+      - apps
+    verbs:
+      - patch
+      - update
     resources:
-      - rolebindings
+      - deployments
   - apiGroups:
       - apps.openshift.io
     verbs:
@@ -101,3 +89,15 @@ rules:
       - delete
     resources:
       - odhdashboardconfigs
+  - apiGroups:
+      - kubeflow.org
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+    resources:
+      - notebooks

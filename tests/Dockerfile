@@ -1,17 +1,17 @@
 FROM quay.io/centos/centos:stream8
 
 # List of chromedriver versions for download - https://chromedriver.chromium.org/downloads
-ARG CHROMEDRIVER_VER=104.0.5112.79
+ARG CHROMEDRIVER_VER=106.0.5249.21
 ARG ORG=opendatahub-io
 ARG BRANCH=master
 ARG ODS_CI_REPO=https://github.com/red-hat-data-services/ods-ci
-ARG ODS_CI_GITREF=releases/1.7.0-5
+ARG ODS_CI_GITREF=master
 ARG OC_CLI_URL=https://mirror.openshift.com/pub/openshift-v4/amd64/clients/ocp/latest/openshift-client-linux.tar.gz
 
 ENV HOME /root
 WORKDIR /root
 
-RUN dnf install -y bc git go-toolset python3-pip unzip && \
+RUN dnf install -y bc git go-toolset python3-pip python3-devel unzip && \
     git clone https://github.com/crobby/peak $HOME/peak && \    
     cd $HOME/peak && \
     git submodule update --init

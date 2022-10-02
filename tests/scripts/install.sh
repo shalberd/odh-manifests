@@ -49,7 +49,7 @@ else
   fi
 fi
 
-if [ -z "${OPENSHIFT_USER}" ] || [ -z "${OPENSHIFT_PASS}" ]; then
+if [ -z "${OPENSHIFT_TESTUSER_NAME}" ] || [ -z "${OPENSHIFT_TESTUSER_PASS}" ]; then
   OAUTH_PATCH_TEXT="$(cat $HOME/peak/operator-tests/odh-manifests/resources/oauth-patch.htpasswd.json)"
   echo "Creating HTPASSWD OAuth provider"
   oc apply -f $HOME/peak/operator-tests/odh-manifests/resources/htpasswd.secret.yaml
@@ -64,8 +64,8 @@ if [ -z "${OPENSHIFT_USER}" ] || [ -z "${OPENSHIFT_PASS}" ]; then
   #  We can have multiple identityProvdiers enabled aslong as their 'name' value is unique
   oc patch oauth cluster --type json -p '[{"op": "add", "path": "/spec/identityProviders/-", "value": '"$OAUTH_PATCH_TEXT"'}]'
 
-  export OPENSHIFT_USER=admin
-  export OPENSHIFT_PASS=admin
+  export OPENSHIFT_TESTUSER_NAME=admin
+  export OPENSHIFT_TESTUSER_PASS=admin
 fi
 
 if ! [ -z "${SKIP_KFDEF_INSTALL}" ]; then
