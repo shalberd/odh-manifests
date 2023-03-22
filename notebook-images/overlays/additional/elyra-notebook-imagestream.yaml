@@ -18,7 +18,7 @@ spec:
       openshift.io/imported-from: quay.io/thoth-station/s2i-lab-elyra
     from:
       kind: DockerImage
-      name: quay.io/thoth-station/s2i-lab-elyra:v0.2.1
+      name: quay.io/thoth-station/s2i-lab-elyra@sha256:a6f178bf1a5aae123ccc215dbe0f498f4dcd0210cced35483ca65846b1d126ec
     name: "v0.2.1"
     referencePolicy:
-      type: Source
+      type: Local

@@ -22,4 +22,4 @@ spec:
       name: quay.io/opendatahub/notebooks@sha256:5df71f5542d2e0161f0f4342aa9a390679d72dc6fae192fd8da1e5671b27e8d4
     name: "py3.8-v1"
     referencePolicy:
-      type: Source
+      type: Local
