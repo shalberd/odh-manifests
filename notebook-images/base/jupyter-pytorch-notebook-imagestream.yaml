@@ -32,7 +32,7 @@ spec:
         openshift.io/imported-from: quay.io/opendatahub/notebooks
     from:
       kind: DockerImage
-      name:  quay.io/opendatahub/notebooks@sha256:fa3cfa4e5c1cfe5952e64f06e294ec5dd48fc10ec90f2866d33665f57137f381
+      name: quay.io/opendatahub/notebooks@sha256:fa3cfa4e5c1cfe5952e64f06e294ec5dd48fc10ec90f2866d33665f57137f381
     name: "py3.8-v1"
     referencePolicy:
       type: Local
