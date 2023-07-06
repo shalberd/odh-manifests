@@ -19,7 +19,7 @@ spec:
         - '--openshift-sar={"namespace": "$(DEPLOYMENT_NAMESPACE)", "resource": "services", "verb": "get"}' 
         - '--openshift-delegate-urls={"/": {"namespace": "$(DEPLOYMENT_NAMESPACE)", "resource": "services", "verb": "get"}}' 
         - '-skip-auth-regex=^/metrics'
-      image: 'registry.redhat.io/openshift4/ose-oauth-proxy@sha256:4bef31eb993feb6f1096b51b4876c65a6fb1f4401fee97fa4f4542b6b7c9bc46'
+      image: 'registry.redhat.io/openshift4/ose-oauth-proxy@sha256:4d5687c6c9216e294d25c6b095f5f4b7ff96e005326fff3303bda7760e012d5b'
       imagePullPolicy: Always
       env:
         - name: DEPLOYMENT_NAMESPACE
