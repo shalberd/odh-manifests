@@ -4,6 +4,5 @@ kind: CustomResourceDefinition
 metadata:
   name: notebooks.kubeflow.org
 spec:
-  preserveUnknownFields: false # TODO: Remove in Kubeflow 1.7 release
   conversion:
     strategy: None

@@ -55,6 +55,11 @@ spec:
         name: manifests
         path: data-science-pipelines-operator/
     name: data-science-pipelines-operator
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: trustyai-service-operator
+    name: trustyai-service-operator
   repos:
   - name: manifests
     uri: https://github.com/opendatahub-io/odh-manifests/tarball/master

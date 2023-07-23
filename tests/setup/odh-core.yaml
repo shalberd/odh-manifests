@@ -55,8 +55,8 @@ spec:
   - kustomizeConfig:
       repoRef:
         name: manifests
-        path: trustyai-service
-    name: trustyai
+        path: trustyai-service-operator
+    name: trustyai-service-operator
   - kustomizeConfig:
       repoRef:
         name: manifests
