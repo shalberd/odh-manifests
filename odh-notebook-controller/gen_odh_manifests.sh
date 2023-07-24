@@ -3,9 +3,9 @@ set -eu -o pipefail
 
 ctrl_dir="odh-notebook-controller"
 ctrl_repository="github.com/opendatahub-io/kubeflow"
-ctrl_branch="v1.6-branch"
+ctrl_branch="v1.7-branch"
 ctrl_image="quay.io/opendatahub/odh-notebook-controller"
-ctrl_tag="v1.6.1-2"
+ctrl_tag="v1.7.0-1"
 ctrl_namespace="opendatahub"
 
 cleanup() {
